@@ -45,11 +45,13 @@ resource storageAccount 'Microsoft.Storage/storageAccounts@2023-05-01' = {
 }
 
 resource blobService 'Microsoft.Storage/storageAccounts/blobServices@2023-05-01' = {
-  name: '${storageAccount.name}/default'
+  parent: storageAccount
+  name: 'default'
 }
 
 resource blobContainer 'Microsoft.Storage/storageAccounts/blobServices/containers@2023-05-01' = {
-  name: '${storageAccount.name}/default/${containerName}'
+  parent: blobService
+  name: containerName
   properties: {
     publicAccess: 'None'
   }
@@ -70,7 +72,7 @@ resource searchService 'Microsoft.Search/searchServices@2025-05-01' = {
     encryptionWithCmk: {
       enforcement: 'Unspecified'
     }
-    hostingMode: 'default'
+    hostingMode: 'Default'
     partitionCount: 1
     replicaCount: 1
   }
