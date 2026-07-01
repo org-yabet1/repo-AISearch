@@ -33,9 +33,11 @@ export SUBSCRIPTION_ID="8ae098e9-776a-4500-b96c-2b312a7b6bba"
 export RESOURCE_GROUP="rg_basic"
 export LOCATION="koreacentral"
 
-# Foundry에 연결된 Azure OpenAI 리소스 정보
+# Foundry에 연결된 Azure OpenAI ARM 리소스 ID (RBAC 부여에 사용)
 export OPENAI_RESOURCE_ID="/subscriptions/<sub>/resourceGroups/<rg>/providers/Microsoft.CognitiveServices/accounts/<aoai-name>"
-export OPENAI_RESOURCE_URI="https://<aoai-name>.openai.azure.com"
+# OPENAI_RESOURCE_URI 기본값: https://foundry-kr.services.ai.azure.com/api/projects/pro-kr
+# 다른 Foundry 엔드포인트를 사용할 경우에만 아래 줄을 활성화하세요
+# export OPENAI_RESOURCE_URI="https://foundry-kr.services.ai.azure.com/api/projects/pro-kr"
 
 # 필요 시 이름 변경 가능 (기본값은 요청값 반영)
 export SEARCH_SERVICE_NAME="ai-search-ppt"

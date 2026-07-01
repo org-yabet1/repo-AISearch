@@ -18,10 +18,11 @@ DATASOURCE_NAME="${DATASOURCE_NAME:-ds-blob-ppt}"
 SKILLSET_NAME="${SKILLSET_NAME:-ss-ppt-ingest}"
 
 # Azure OpenAI / Foundry-linked resource info (required for vectorization)
+# OPENAI_RESOURCE_ID: ARM resource ID used for RBAC assignment
 # Example: /subscriptions/<sub>/resourceGroups/<rg>/providers/Microsoft.CognitiveServices/accounts/<account>
 : "${OPENAI_RESOURCE_ID:?Set OPENAI_RESOURCE_ID to your Azure OpenAI resource ID}"
-# Example: https://<account>.openai.azure.com
-: "${OPENAI_RESOURCE_URI:?Set OPENAI_RESOURCE_URI to your Azure OpenAI endpoint URI}"
+# OPENAI_RESOURCE_URI: Foundry project endpoint used by Search skills and vectorizer
+OPENAI_RESOURCE_URI="${OPENAI_RESOURCE_URI:-https://foundry-kr.services.ai.azure.com/api/projects/pro-kr}"
 EMBEDDING_DEPLOYMENT="${EMBEDDING_DEPLOYMENT:-text-embedding-3-large}"
 CHAT_DEPLOYMENT="${CHAT_DEPLOYMENT:-gpt-5.4}"
 
