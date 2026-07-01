@@ -1,6 +1,10 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+REPO_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
+BICEP_FILE="$REPO_ROOT/infra/main.bicep"
+
 # Required inputs
 SUBSCRIPTION_ID="${SUBSCRIPTION_ID:-8ae098e9-776a-4500-b96c-2b312a7b6bba}"
 RESOURCE_GROUP="${RESOURCE_GROUP:-rg_basic}"
@@ -35,7 +39,7 @@ az group create --name "$RESOURCE_GROUP" --location "$LOCATION" 1>/dev/null
 echo "[1/6] Deploy core resources (Storage + Search + MI + Storage RBAC)..."
 az deployment group create \
   --resource-group "$RESOURCE_GROUP" \
-  --template-file /home/runner/work/repo-AISearch/repo-AISearch/infra/main.bicep \
+  --template-file "$BICEP_FILE" \
   --parameters \
       location="$LOCATION" \
       searchServiceName="$SEARCH_SERVICE_NAME" \
