@@ -30,13 +30,13 @@ on:
       replicaCount:
         description: Number of replicas
         required: true
-        default: "1"
-        type: string
+        default: 1
+        type: number
       partitionCount:
         description: Number of partitions
         required: true
-        default: "1"
-        type: string
+        default: 1
+        type: number
 
 permissions:
   id-token: write
